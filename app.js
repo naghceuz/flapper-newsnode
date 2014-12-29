@@ -8,6 +8,26 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/news');
+
+require('./models/Posts');
+require('./models/Comments');
+
+// var mongoose = require('mongoose');
+
+// var PostSchema = new mongoose.Schema({
+//   title: String,
+//   link: String,
+//   upvotes: {type: Number, default: 0},
+//   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+// });
+
+
+// mongoose.connect('mongodb://localhost/news');
+// require('./models/Posts');
+
 var app = express();
 
 // view engine setup
@@ -58,3 +78,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+// app.listen("local:3000");
